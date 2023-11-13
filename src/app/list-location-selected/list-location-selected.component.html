@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="title">
+    <h1>List location</h1>
+    <div class="action">
+      <a href="#" class="btn btn--full" routerLink="/">Select location</a>
+      <a href="#" class="btn btn--full" routerLink="/admin-page">Admin page</a>
+    </div>
+  </div>
+  <div class="list">
+    <div class="item" *ngFor="let value of listLocation">
+      <mat-accordion>
+        <mat-expansion-panel
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              [Latitude - Longitude]: [{{ value.lat }} - {{ value.lng }}]
+            </mat-panel-title>
+            <mat-panel-description>
+              Status:<app-status-label
+                [status]="value.status"
+              ></app-status-label>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <agm-map
+            [latitude]="value.lat"
+            [longitude]="value.lng"
+            [zoom]="12"
+            style="height: 20vh"
+          >
+            <agm-marker
+              [latitude]="value.lat"
+              [longitude]="value.lng"
+            ></agm-marker>
+          </agm-map>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</div>

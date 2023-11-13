@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="title">
+    <div class="header">
+      <h1>Select location</h1>
+      <div class="btn-action">
+        <a href="#" class="btn btn--full" (click)="saveLocation()"
+          >Save location</a
+        >
+        <a
+          href="#"
+          class="btn btn--outline"
+          routerLink="/list-location-selected-component"
+          >List location selected</a
+        >
+      </div>
+    </div>
+    <div class="infor-location">
+      <h3 class="text">Current selected location</h3>
+      <label class="location"
+        >Latitude: <span>{{ selectedLat }}</span></label
+      >
+      <label class="location"
+        >Longitude: <span>{{ selectedLng }}</span></label
+      >
+    </div>
+  </div>
+  <div class="map">
+    <agm-map
+      [latitude]="selectedLat"
+      [longitude]="selectedLng"
+      [zoom]="12"
+      style="height: 60vh"
+      (mapClick)="onMapClick($event)"
+    >
+      <agm-marker
+        [latitude]="selectedLat"
+        [longitude]="selectedLng"
+      ></agm-marker>
+    </agm-map>
+  </div>
+</div>

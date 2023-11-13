@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="title">
+    <h1>List location waiting approve</h1>
+    <a href="#" class="btn btn--full" routerLink="/">Select location</a>
+  </div>
+  <div class="list">
+    <div
+      class="item"
+      *ngFor="let value of listLocation"
+      (click)="findNearbyPlaces(value.lat, value.lng)"
+    >
+      <mat-accordion>
+        <mat-expansion-panel
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              [Latitude - Longitude]: [{{ value.lat }} - {{ value.lng }}]
+            </mat-panel-title>
+            <mat-panel-description>
+              <div *ngIf="value.status === 'pending'; else templateName">
+                <div>
+                  <span>
+                    Action:<app-status-label
+                      status="approve"
+                      (click)="action(value.lat, value.lng, 'approve')"
+                    ></app-status-label>
+                    <app-status-label
+                      status="reject"
+                      (click)="action(value.lat, value.lng, 'reject')"
+                    ></app-status-label
+                  ></span>
+                </div>
+              </div>
+
+              <ng-template #templateName>
+                Status:<app-status-label
+                  [status]="value.status"
+                ></app-status-label>
+              </ng-template>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <agm-map
+            [latitude]="value.lat"
+            [longitude]="value.lng"
+            [zoom]="12"
+            style="height: 20vh"
+          >
+            <agm-marker
+              [latitude]="value.lat"
+              [longitude]="value.lng"
+            ></agm-marker>
+          </agm-map>
+          <div class="location-infor">
+            <label>Location info</label>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</div>

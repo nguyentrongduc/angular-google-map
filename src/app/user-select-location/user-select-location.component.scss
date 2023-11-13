@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 120rem;
+  font-family: "Rubik", sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #555;
+  margin: 4.8rem auto;
+  .title {
+    margin-bottom: 9.6rem;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4.8rem;
+    h1 {
+      font-size: 4.8rem;
+      color: #333;
+    }
+
+    .btn-action {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .btn,
+    .btn:link,
+    .btn:visited {
+      display: inline-block;
+
+      text-decoration: none;
+      font-size: 1.6rem;
+      font-weight: 600;
+      padding: 1.6rem 3.2rem;
+      border-radius: 9px;
+
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.3s;
+    }
+
+    .btn--full:link,
+    .btn--full:visited {
+      background-color: #e67e22;
+      color: #555;
+    }
+
+    .btn--full:hover,
+    .btn--full:active {
+      background-color: #cf711f;
+    }
+
+    .btn--outline:link,
+    .btn--outline:visited {
+      background-color: #f3b664;
+      color: #555;
+    }
+
+    .btn--outline:hover,
+    .btn--outline:active {
+      background-color: #f1eb90;
+
+      transition: all 0.3s;
+    }
+  }
+
+  .infor-location {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    .text {
+      font-size: 2.4rem;
+    }
+    .location {
+      font-weight: 400;
+      font-size: 1.6rem;
+      span {
+        color: #be3144;
+        font-weight: 700;
+      }
+    }
+  }
+}
